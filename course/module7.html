@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Немного о ttk.</title>
+    <link rel="stylesheet" href="D:/site/css/style2.css">
+</head>
+<body>
+	<header>
+		<nav>
+			<ul id="list_menu">
+				<li><a href="D:/site/index.html">Главная</a></li>
+				<li><a href="D:/site/index.html#course">Уроки</a></li>
+				<li><a href="D:/site/doc.html">Документация</a></li>
+			</ul>
+		</nav>
+        <div class="text"> 
+		<h1>Немного о ttk.</h1>
+        </div>
+    </header>
+	<main>
+		<h3>Разделы модуля</h3>
+        <hr>
+        <div class="razdel">
+		    <ol>
+			    <li><a href="#vved">Введение</a></li>
+			    <li><a href="#stl">Style</a></li>
+			    <li><a href="#cmbbx">Combobox</a></li>
+			    <li><a href="#prgrsbr">Progressbar</a></li>
+			    <li><a href="#test7">Тест</a></li>
+			</ol>
+        </div>
+    <h4><a name="vved">Введение</a></h4>
+    <hr>
+    <p><strong>ttk (themed tk)</strong> это расширение tcl/tk с новым набором виджетов. В ttk используется новый движок для создания виджетов. Этот движок обладает поддержкой тем и стилей оформления. Благодаря этому виджеты ttk выглядят более естественно в различных операционных системах.</p>
+    <p>Начиная с версий python 2.7 и 3.1.2 в Tkinter включён модуль для работы с ttk.</p>
+    <img src="D:/site/img/g.png">
+    <p>Внешний вид некоторых виджетов ttk, используется тема clam</p>
+    <p>В ttk включены следующие виджеты, которые можно использовать вместо соответствующих виджетов tk: Button, Checkbutton, Entry, Frame, Label, LabelFrame, Menubutton, PanedWindow, Radiobutton, Scale и Scrollbar. Кроме того имеется несколько новых виджетов: Combobox, Notebook, Progressbar, Separator, Sizegrip и Treeview.</p>
+    <p>Поскольку это относительно новая возможность Tkinter, несколько слов об установке этого модуля. Версии python 2.7/3.1.2 и старше уже имеют в своём составе этот модуль. Для использования ttk с более ранними версиями python, его нужно установить самостоятельно. </p>
+    <p>Домашняя страница модуля. В данный момент python-ttk хостится в svn python.org. Модуль представляет собой один файл - ttk.py, который нужно положить в каталог, где его сможет найти python. Прямые ссылки для скачивания: для версии 2.x, для версии 3.x.</p>
+    <p>С точки зрения программиста главное отличие новых виджетов от старых заключается в том, что у виджетов ttk отсутствуют опции для конфигурирования его внешнего вида. Сравните, например, количество STANDARD OPTIONS для старого и нового виджета button. Конфигурация внешнего вида виджетов ttk осуществляется через темы и стили. В остальном использование виджетов ttk аналогично соответствующим виджетам tk.</p>
+    <p>ttk имеет четыре встроенных темы: default, classic, alt, clam. Кроме того дополнительно под Windows есть темы winnative, xpnative и vista, а под Mac OS X - aqua.</p>
+    <p>Внешний вид некоторых виджетов ttk, используется тема clam</p>
+    <p>В ttk включены следующие виджеты, которые можно использовать вместо соответствующих виджетов tk: Button, Checkbutton, Entry, Frame, Label, LabelFrame, Menubutton, PanedWindow, Radiobutton, Scale и Scrollbar. Кроме того имеется несколько новых виджетов: Combobox, Notebook, Progressbar, Separator, Sizegrip и Treeview.</p>
+    <p>Поскольку это относительно новая возможность Tkinter, несколько слов об установке этого модуля. Версии python 2.7/3.1.2 и старше уже имеют в своём составе этот модуль. Для использования ttk с более ранними версиями python, его нужно установить самостоятельно. </p>
+    <h4><a name="stl">Style</a></h4>
+    <hr>
+    <p>Style это класс для работы со стилями и темами. Именно этот класс надо использовать для конфигурирования внешнего вида виджетов. Основные методы класса:</p>
+    <p><em>configure</em></p>
+    <p>Конфигурирование внешнего вида виджетов. В качестве аргументов принимает название стиля виджета (например "TButton") и список опций конфигурирования.<em>Пример:</em></p>
+    <pre>
+        <code>
+           style.configure("TButton", padding=6, relief="flat", background="#ccc")
+        </code>
+    </pre>
+    <p><em>map</em></p>
+    <p>Конфигурирование внешнего вида виджетов в зависимости от их состояний (active, pressed, disabled и т.д.). В качестве аргументов принимает название стиля виджета и список опций конфигурирования, где опции представлены в виде списка. <em>Пример:</em></p>
+    <pre>
+        <code>
+           style.map("C.TButton",
+           foreground=[('pressed', 'red'), ('active', 'blue')],
+           background=[('pressed', '!disabled', 'black'), ('active', 'white')]
+           )
+           lookup
+        </code>
+    </pre>
+    <p>Возвращает соответствующую опцию конфигурирования. <em>Пример:</em></p>
+    <pre>
+        <code>
+           style.lookup("TButton", "font")
+           layout
+        </code>
+    </pre>
+    <p>Изменяет layout (схему) виджета. Виджеты ttk состоят из отдельных элементов, опций конфигурирования и других вложенных layouts. Следующий пример иллюстрирует применение метода layout:</p>
+    <pre>
+        <code>
+           style.layout("TMenubutton", [
+           ("Menubutton.background", None),
+           ("Menubutton.button", {"children":
+           [("Menubutton.focus", {"children":
+           [("Menubutton.padding", {"children":
+           [("Menubutton.label", {"side": "left", "expand": 1})]
+           })]
+           })]
+           }),
+           ])
+        </code>
+    </pre>
+    <p><strong>element_create</strong></p>
+    <p>Создаёт новый элемент темы.</p>
+    <p><strong>element_names</strong></p>
+    <p>Возвращает список элементов текущей темы.</p>
+    <p><strong>element_option</strong></p>
+    <p>Возвращает список опций (конфигурацию), указанного в аргументе элемента.</p>
+    <p><strong>theme_create</strong></p>
+    <p>Создаёт новую тему. Аргументы те же, что и в theme_settings.</p>
+    <p><strong>theme_settings</strong></p>
+    <p>Конфигурирует существующую тему. Первый аргумент - название темы, второй аргумент - словарь, ключами которого являются названия стилей (TButton и т.п.), а значениями - layout соответствующего стиля.</p>
+    <p><strong>theme_names</strong></p>
+    <p>Возвращает список доступных тем.</p>
+    <p><strong>theme_use</strong></p>
+    <p>Изменяет текущую тему на указанную в аргументе.</p>
+    <h4><a name="cmbbx">Combobox</a></h4>
+    <hr>
+    <p>Виджет Combobox предназначен для отображения списка значений, их выбора или изменения пользователем. В версии tk ему подобен виджет Listbox. Разница заключается в том, что Combobox имеет возможность сворачиваться подобно свитку, а Listbox будет отображаться всегда открытым. Что бы отобразить Combobox с заранее заданными значениями в форме, достаточно сделать следующее:</p>
+    <pre>
+        <code>
+           import tkinter as tk
+           import tkinter.ttk as ttk
+           root = tk.Tk()
+           frame = tk.Frame(root)
+           frame.grid()
+           combobox = ttk.Combobox(frame,values = [u"ОДИН",u"ДВА",u"ТРИ"],height=3)
+           #frame - задает родительский виджет, на его территории будет располагаться Combobox
+           #values - задает набор значений, которые будут содержаться в Combobox изначально
+           #height - задает высоту выпадающего списка. Если число элементов списка меньше 11, то можно не задавать.
+           #Если не задано при количестве элементов больше 10, то с правой стороны появится полоса прокрутки.
+           #Если в нашем примере задать значение height меньше трех, то с правой стороны появится полоса прокрутки,
+           #но она будет недоступна, а все элементы будут отображаться одновременно.
+           combobox.set(u"ОДИН")#с помощью этой строчки мы установим Combobox в значение ОДИН изначально
+           combobox.grid(column=0,row=0)#Позиционируем Combobox на форме
+           root.mainloop()
+        </code>
+    </pre>
+    <h4><a name="prgrsbr">Progressbar</a></h4>
+    <hr>
+    <p>Виджет отображает уровень загрузки.</p>
+    <p><em>length - длина полосы.</em></p>
+    <p><em>start</em></p>
+    <p>Запускает бесконечный цикл загрузки. Шаг длиною 1 выполняется один раз в указанное время (в миллисекундах).</p>
+    <p><em>stop</em></p>
+    <p>Останавливает цикл загрузки.</p>
+    <p><em>step</em></p>
+    <p>Продвигает загрузку на заданное количество шагов.</p>
+    <pre>
+        <code>
+           import tkinter as tk
+           import tkinter.ttk as ttk
+           root = tk.Tk()
+           pb = ttk.Progressbar(root, length=100)
+           pb.pack()
+           pb.start(100)
+           root.mainloop()
+        </code>
+    </pre>
+    <h4><a name="test7">Тест</a></h4>
+    <hr>
+   <div class="wrapper">
+            <iframe src="D:/site/quiz/q8.html" width="480" height="720" class="quiz-frame"></iframe>
+        </div>
+    <div class="btn-up btn-up_hide"><script src="D:/site/js/butup.js"></script></div>
+	</main>
+	<footer>
+        <h3>Программирование GUI на Python</h3>
+        <h4>Курс по созданию графических интерфейсов с помощью библиотеки Tkinter.</h4>
+        <p>Воронежский государственный педагогический университет</p><p>Михайлова Мария, 2023</p>
+        <p><a href="mailto:mkhlvmari@gmail.com">mkhlvmari@gmail.com</a></p>
+    </footer>
+</body>
+</html>

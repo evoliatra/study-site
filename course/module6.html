@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Работа с изображениями.</title>
+	<link rel="stylesheet" href="D:/site/css/style2.css">
+</head>
+<body>
+	<header>
+		<nav>
+			<ul id="list_menu">
+				<li><a href="D:/site/index.html">Главная</a></li>
+				<li><a href="D:/site/index.html#course">Уроки</a></li>
+				<li><a href="D:/site/doc.html">Документация</a></li>
+			</ul>
+		</nav>
+		<div class="text"> 
+		<h1>Работа с изображениями</h1>
+	   </div>
+    </header>
+	<main>
+		<h3>Разделы модуля</h3>
+		<hr>
+		<div class="razdel">
+		    <ol>
+			    <li><a href="#bi">BitmapImage</a></li>
+			    <li><a href="#pi">PhotoImage</a></li>
+			    <li><a href="#test6">Тест</a></li>
+			</ol>
+		</div>
+     <h4><a name="bi">BitmapImage</a></h4>
+     <hr>
+     <p>Конструктор класса принимает следующие аргументы:</p>
+     <p>background и foreground - цвета фона и переднего плана для изображения. Поскольку изображение двухцветное, то эти параметры определяют соответственно чёрный и белый цвет.</p>
+     <p>file и maskfile - пути к файлу с изображением и к маске (изображению, указывающему какие пиксели будут прозрачными).</p>
+     <p>data и maskdata - вместо пути к файлу можно указать уже загруженные в память данные изображения. Данная возможность удобна для встраивания изображения в программу.</p>
+     <p>Пример:</p>
+     <pre>
+        <code>
+            from Tkinter import *
+            data = '''#define image_width 15
+            #define image_height 15
+            static unsigned char image_bits[] = {
+            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x38, 0x1c, 0x30, 0x0c, 0x60, 0x06,
+            0x60, 0x06, 0xc0, 0x03, 0xc0, 0x03, 0x60, 0x06, 0x60, 0x06, 0x30, 0x0c,
+            0x38, 0x1c, 0x00, 0x00, 0x00, 0x00 };'''
+            root=Tk()
+            image = BitmapImage(data=data, background='red', foreground='green')
+            button=Button(root, image=image)
+            button.pack()
+            root.mainloop()
+        </code>
+     </pre>
+     <h4><a name="pi">PhotoImage</a></h4>
+     <hr>
+     <p>PhotoImage позволяет использовать полноцветное изображение. Кроме того у этого класса есть несколько (достаточно примитивных) методов для работы с изображениями. PhotoImage гарантированно понимает формат GIF.</p>
+     <p>Аргументы конструктора:</p>
+     <p>file - путь к файлу с изображением.</p>
+     <p>data - вместо пути к файлу можно указать уже загруженные в память данные изображения. Изображения в формате GIF могут быть закодированы с использованием base64. Данная возможность удобна для встраивания изображения в программу.</p>
+     <p>format - явное указание формата изображения.</p>
+     <p>width, height - ширина и высота изображения.</p>
+     <p>gamma - коррекция гаммы.</p>
+     <h4><a name="test6">Тест</a></h4>
+     <hr>
+     <div class="wrapper">
+            <iframe src="D:/site/quiz/q7.html" width="480" height="720" class="quiz-frame"></iframe>
+        </div>
+     <div class="btn-up btn-up_hide"><script src="D:/site/js/butup.js"></script></div>
+	</main>
+	<footer>
+		<h3>Программирование GUI на Python</h3>
+		<h4>Курс по созданию графических интерфейсов с помощью библиотеки Tkinter.</h4>
+		<p>Воронежский государственный педагогический университет</p><p>Михайлова Мария, 2023</p>
+		<p><a href="mailto:mkhlvmari@gmail.com">mkhlvmari@gmail.com</a></p>
+	</footer>
+</body>
+</html>

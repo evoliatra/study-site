@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Привязка событий.</title>
+    <link rel="stylesheet" href="D:/site/css/style2.css">
+</head>
+<body>
+	<header>
+		<nav>
+			<ul id="list_menu">
+				<li><a href="D:/site/index.html">Главная</a></li>
+				<li><a href="D:/site/index.html#course">Уроки</a></li>
+				<li><a href="D:/site/doc.html">Документация</a></li>
+			</ul>
+		</nav>
+        <div class="text"> 
+		<h1>Привязка событий</h1>
+    </div>
+    </header>
+	<main>
+		<h3>Разделы модуля</h3>
+        <hr>
+        <div class="razdel">
+		    <ol>
+			    <li><a href="#cmd">command</a></li>
+			    <li><a href="#bnd">bind()</a></li>
+			    <li><a href="#sob">Названия событий</a></li>
+			    <li><a href="#mod">Список модификаторов</a></li>
+			    <li><a href="#sobtyp">Типы событий</a></li>
+			    <li><a href="#dopmeth">Дополнительные методы</a></li>
+			    <li><a href="#test5">Тест</a></li>
+			</ol>
+        </div>
+    <h4><a name="cmd">command</a></h4>
+    <hr>
+    <p>Для большинства виджетов, реагирующих на действие пользователя, активацию виджета (например нажатие кнопки) можно привязать с использованием опции command. <em>К таким виджетам относятся</em>: Button, Checkbutton, Radiobutton, Spinbox, Scrollbar, Scale. Выше мы уже неоднократно пользовались этим способом:</p>
+    <pre>
+        <code>
+            button = Button(command=callback)
+        </code>
+    </pre>
+    <p>Такой способ является предпочтительным и наиболее удобным способом привязки.</p>
+    <h4><a name="bnd">bind()</a></h4>
+    <hr>
+    <p><em>Метод bind</em> привязывает событие к какому-либо действию (нажатие кнопки мыши, нажатие клавиши на клавиатуре и т.д.). bind принимает три аргумента: название события, функцию, которая будет вызвана при наступлении события, третий аргумент (необязательный) - строка "+" - означает, что эта привязка добавляется к уже существующим. Если третий аргумент опущен или равен пустой строке - привязка замещает все другие привязки данного события к виджету.</p>
+    <p><em>Метод bind</em> возвращает идентификатор привязки, который может быть использован в функции unbind.</p>
+    <p>Обратите внимание, что если bind привязан к окну верхнего уровня, то Tkinter будет обрабатывать события всех виджетов этого окна (см. также bind_all ниже).</p>
+    <p>Функция, которая вызывается при наступлении события, должна принимать один аргумент. Это объект класса <strong>Event</strong>, в котором описано наступившее событие. Объект класса Event имеет следующие <strong>атрибуты</strong> (в скобках указаны события, для которых этот атрибут установлен):</p>
+    <ul>
+    	<li><i>serial</i> - серийный номер события (все события)
+        <li><i>num</i> - номер кнопки мыши (ButtonPress, ButtonRelease)
+        <li><i>focus</i> - имеет ли окно фокус (Enter, Leave)
+        <li><i>height и width</i> - ширина и высота окна (Configure, Expose)
+        <li><i>keycode</i> - код нажатой клавиши (KeyPress, KeyRelease)
+        <li><i>state</i> - состояние события (для ButtonPress, ButtonRelease, Enter, KeyPress, КeyRelease, Leave, Motion - в виде числа; для Visibility - в виде строки)
+        <li><i>time</i> - время наступления события (все события)
+        <li><i>x и y</i> - координаты мыши
+        <li><i>x_root и y_root</i> - координаты мыши на экране (ButtonPress, ButtonRelease, KeyPress, KeyRelease, Motion)
+        <li><i>char</i> - набранный на клавиатуре символ (KeyPress, KeyRelease)
+        <li><i>send_event</i> - см. документацию по X/Windows
+        <li><i>keysym</i> - набранный на клавиатуре символ (KeyPress, KeyRelease)
+        <li><i>keysym_num</i> - набранный на клавиатуре символ в виде числа (KeyPress, KeyRelease)
+        <li><i>type</i> - тип события в виде числа (все события)
+        <li><i>widget</i> - виджет, который получил событие (все события)
+        <li><i>delta</i> - изменение при вращении колеса мыши (MouseWheel)
+    </ul>
+    <p>Эта функция может возвращать строки "continue" и "break". Если функция возвращает "continue" то Tkinter продолжит обработку других привязок этого события, если "break" - обработка этого события прекращается. Если функция ничего не возвращает (если возвращает None), то обработка событий продолжается (т.е. это эквивалентно возвращению "continue").</p>
+    <h4><a name="sob">Названия событий</a></h4>
+    <hr>
+    <p>Есть три формы названия событий. Самый простой случай это символ ASCII. Так описываются события нажатия клавиш на клавиатуре:</p>
+    <pre>
+        <code>
+            widget.bind("z", callback)
+            callback вызывается каждый раз, когда будет нажата клавиша "z".
+        </code>
+    </pre>
+    <p>Второй способ длиннее, но позволяет описать больше событий. Он имеет следующий синтаксис:</p>
+    <pre>
+        <code>
+            modifier-modifier-type-detail
+        </code>
+    </pre>
+    <p>Название события заключено в угловые скобки. Внутри имеются ноль или более модификаторов, тип события и дополнительная информация (номер нажатой клавиши мыши или символ клавиатуры) Поля разделяются дефисом или пробелом. Пример (привязываем одновременное нажатие Ctrl+Shift+q):</p>
+    <pre>
+        <code>
+            widget.bind("Control-Shift-KeyPress-q", callback)
+            (в данном примере KeyPress можно убрать).
+        </code>
+    </pre>
+    <p>Третий способ позволяет привязывать виртуальные события - события, которые генерируются самим приложением. Такие события можно создавать самим, а потом привязывать их. Имена таких событий помещаются в двойные угловые скобки: Paste. Есть некоторое количество уже определённых виртуальных событий.</p>
+    <h4><a name="mod">Список модификаторов</a></h4>
+    <hr>
+    <ul>
+    <li>Return - Enter
+    <li>Escape - Esc
+    <li>Control - Ctrl
+    <li>Alt
+    <li>Shift
+    <li>Lock
+    <li>Extended
+    <li>Prior - PgUp
+    <li>Next - PgDown
+    <li>Button1, B1 - нажата первая (левая) кнопка мыши
+    <li>Button2, B2 - вторая (средняя) кнопка мыши
+    <li>Button3, B3 - третья (правая)
+    <li>Button4, B4 - четвёртая
+    <li>Button5, B5 - пятая
+    <li>Mod1, M1, Command
+    <li>Mod2, M2, Option
+    <li>Mod3, M3
+    <li>Mod4, M4
+    <li>Mod5, M5
+    <li>Meta, M
+    <li>Double - двойной щелчок мыши (например, Double-Button-1)
+    <li>Triple - тройной
+    <li>Quadruple - четверной
+    <h4><a name="sobtyp">Типы событий</a></h4>
+    <p>Здесь перечислены все возможные типы событий, для самых часто используемых дано описание. Более подробно см. man bind.</p>
+    <li>Activate, Deactivate
+    <li>MouseWheel - прокрутка колесом мыши
+    <li>KeyPress, KeyRelease - нажатие и отпускание клавиши на клавиатуре
+    <li>ButtonPress, ButtonRelease, Motion - нажатие, отпускание клавиши мыши, движение мышью
+    <li>Configure - изменение положения или размера окна
+    <li>Map, Unmap - показывание или сокрытие окна (например, в случае сворачивания/разворачивания окна пользователем)
+    <li>Visibility
+    <li>Expose - событие генерируется, когда необходимо всё окно или его часть перерисовать
+    <li>Destroy - закрытие окна
+    <li>FocusIn, FocusOut - получение или лишение фокуса
+    <li>Enter, Leave - Enter генерируется когда курсор мыши "входит" в окно, Leave - когда "уходит" из окна
+    <li>Property
+    <li>Colormap
+    <li>MapRequest, CirculateRequest, ResizeRequest, ConfigureRequest, Create
+    <li>Gravity, Reparent, Circulate
+    </ul>
+    <p>Клавиатурные символы</p>
+    <p>Полный список см. man keysyms.</p>
+    <p><em>Пример:</em></p>
+    <pre>
+        <code>
+            from Tkinter import *
+            root=Tk()
+            def leftclick(event):
+            print u'Вы нажали левую кнопку мыши'
+            def rightclick(event):
+            print u'Вы нажали правую кнопку мыши'
+            button1=Button(root, text=u'Нажми')
+            button1.pack()
+            button1.bind('Button-1', leftclick)
+            button1.bind('Button-3', rightclick)
+            root.mainloop()
+        </code>
+    </pre>
+    <h4><a name="dopmeth">Дополнительные методы</a></h4>
+    <hr>
+    <p>bind_all - создаёт привязку для всех виджетов приложения. Отличие от привязки к окну верхнего уровня заключается в том, что в случае привязки к окну привязываются все виджеты этого окна, а этот метод привязывает все виджеты приложения (у приложения может быть несколько окон).</p>
+    <p>bind_class - создаёт привязку для всех виджетов данного класса</p>
+    <p><em>Пример:</em></p>
+    <pre>
+        <code>
+            from Tkinter import *
+            def callback(e):
+            print u'Нажата кнопка', e.widget['text']
+            root=Tk()
+            button1 = Button(root, text='1')
+            button1.pack()
+            button2 = Button(root, text='2')
+            button2.pack()
+            root.bind_class('Button', '<1>', callback)
+            root.mainloop()
+        </code>
+    </pre>
+    <p>bindtags - позволяет изменить порядок обработки привязок. По умолчанию порядок следующий: виджет, класс, окно, all; где виджет - привязка к виджету (bind), класс - привязка к классу (bind_class), окно - привязка к окну (root.bind), all - привязка всех виджетов (bind_all).</p>
+    <p><em>Пример, меняем порядок обработки привязок на обратный:</em></p>
+     <pre>
+        <code>
+           from Tkinter import *
+           def callback1(e): print 'callback1'
+           def callback2(e): print 'callback2'
+           def callback3(e): print 'callback3'
+           def callback4(e): print 'callback4'
+           root=Tk()
+           button = Button(root)
+           button.pack()
+           button.bind('<1>', callback1)
+           root.bind_class('Button', '<1>', callback2)
+           root.bind('<1>', callback3)
+           root.bind_all('<1>', callback4)
+           button.bindtags(('all', root, 'Button', button))
+           root.mainloop()
+        </code>
+    </pre>
+    <p>unbind - отвязать виджет от события. В качестве аргумента принимает идентификатор, полученный от метода bind.</p>
+    <p>unbind_all - то же, что и unbind, только для метода bind_all.</p>
+    <p>unbind_class - то же, что и unbind, только для метода bind_class. </p>
+    <h4><a name="test5">Тест</a></h4>
+    <hr>
+    <div class="wrapper">
+            <iframe src="D:/site/quiz/q6.html" width="480" height="720" class="quiz-frame"></iframe>
+        </div>
+    <div class="btn-up btn-up_hide"><script src="D:/site/js/butup.js"></script></div>
+	</main>
+	<footer>
+        <h3>Программирование GUI на Python</h3>
+        <h4>Курс по созданию графических интерфейсов с помощью библиотеки Tkinter.</h4>
+        <p>Воронежский государственный педагогический университет</p><p>Михайлова Мария, 2023</p>
+        <p><a href="mailto:mkhlvmari@gmail.com">mkhlvmari@gmail.com</a></p>
+    </footer>
+</body>
+</html>
