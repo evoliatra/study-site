@@ -1,0 +1,204 @@
+*{
+	margin: 0;
+	box-sizing: border-box;
+}
+
+html{
+	scroll-behavior: smooth;
+}
+
+header nav ul{
+	list-style: none;
+	text-decoration: none;
+}
+
+#list_menu {
+	margin-top: 180px;
+	margin-bottom: 50px;
+}
+
+#list_menu a{
+	font-size:40px;
+	font-style: Arial, "Helvetica Neue", Helvetica, sans-serif;
+	color: #fcfffc;
+	border-left: 2px solid #fcfffc;
+	padding-left: 5px ;
+	transition: all 0.3s ease;
+}
+
+#list_menu a:hover {
+	border-left: 2px solid #fcfffc;
+	padding-left: 15px;
+	transition: all 0.3s ease;
+}
+
+#list_menu li{
+	margin: 30px 0;
+}
+
+nav {
+	padding: 20vh 35px;
+	position: absolute;
+	background: rgba(50, 50, 50, 0.5);
+	height: 100vh;
+	backdrop-filter: blur(16px);
+	border-right: 7px solid #fcfffc;
+	left: -345px;
+}
+
+nav:hover {
+	left: 0;
+	transition: all 0.3s ease;
+}
+
+.text {
+	background-image: url('D:/site/img/intrfs.png');
+	width: 100%;
+	height: 100vh;
+	overflow: hidden;
+	text-transform: uppercase;
+}
+
+.text h1{
+	font: bold 55px Helvetica, Sans-Serif;
+	color: #fcfffc;
+	margin-left: 100px;
+	margin-top: 430px;
+	text-align: center;
+}
+
+.text h3{
+	font: bold 25px Helvetica, Sans-Serif;
+	color: #fcfffc;
+	margin-left: 100px;
+	margin-top: 25px;
+	text-align: center;
+}
+
+footer{
+	background-color: #34353C;
+	padding-top: 40px;
+}
+
+footer p{
+	font-size: 20px;
+	color: #fcfffc;
+	text-align: center;
+	padding-bottom: 3px;
+}
+
+footer a{
+	color: #fcfffc;
+}
+
+footer h3{
+	font: bold 25px Helvetica, Sans-Serif;
+    color: #fcfffc;
+	text-align: center;	
+}
+
+footer h4{
+	font: bold 25px Helvetica, Sans-Serif;
+	color: #fcfffc;
+	text-align: center;
+	padding-bottom: 40px;
+}
+
+main {
+	margin: 55px;
+}
+
+main p{
+	margin-bottom: 30px;
+	margin-top: 30px;
+	font-family: Arial, "Helvetica CY", "Nimbus Sans L", sans-serif;
+	font-size: 40px;
+	text-align: center;
+}
+
+main table{
+	margin-top: 20px;
+	font-family: Arial, "Helvetica CY", "Nimbus Sans L", sans-serif;
+	font-size: 30px;
+	font-style: normal;
+}
+
+main ul{
+	margin-top: 10px;
+	margin-bottom: 25px;
+}
+
+main a{
+	color: #fafffd;
+}
+
+main td ul li{
+	color: #000000;
+}
+
+main .zag{
+	color: #000000;
+}
+main b{
+	margin-bottom: 30px;
+	font-family: Arial, "Helvetica CY", "Nimbus Sans L", sans-serif;
+	font-size: 40px;
+	font-style: normal;
+}
+
+.btn-up {
+  /* фиксированное позиционирование */
+  position: fixed;
+  /* цвет фона */
+  background-color: #673ab7;
+  /* расстояние от правого края окна браузера */
+  right: 20px;
+  /* расстояние от нижнего края окна браузера */
+  bottom: 0;
+  /* скругление верхнего левого угла */
+  border-top-left-radius: 8px;
+  /* скругление верхнего правого угла */
+  border-top-right-radius: 8px;
+  /* вид курсора */
+  cursor: pointer;
+  /* отображение элемента как flex */
+  display: flex;
+  /* выравниваем элементы внутри элемента по центру вдоль поперечной оси */
+  align-items: center;
+  /* выравниваем элементы внутри элемента по центру вдоль главной оси */
+  justify-content: center;
+  /* ширина элемента */
+  width: 60px;
+  /* высота элемента */
+  height: 50px;
+}
+
+.btn-up::before {
+  content: "";
+  width: 40px;
+  height: 40px;
+  background: transparent no-repeat center center;
+  background-size: 100% 100%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23fff' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z'/%3E%3C/svg%3E");
+}
+
+.btn-up_hide {
+  display: none;
+}
+
+.btn-up_hiding {
+  opacity: 0;
+  transform: translateY(100px);
+}
+
+.btn-up-icon {
+  width: 40px;
+  height: 40px;
+  fill: currentcolor;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .btn-up:hover {
+    background-color: #512da8; /* цвет заднего фона при наведении */
+  }
+}
