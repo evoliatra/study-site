@@ -15,7 +15,7 @@ Student educational project carried out within the framework of the discipline "
 
 ![image](https://github.com/evoliatra/study-site/assets/96312954/7e64f34f-aaf1-4262-91db-440d2fd554f4)
 
-![image](https://github.com/evoliatra/study-site/assets/96312954/605f0cf2-afe5-4767-a724-599e2ecc55a3)
+
 
 
 
