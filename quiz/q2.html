@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+ 
+<head>
+  <meta charset="UTF-8" />
+  <title>Simple Multiple Choice Quiz with JavaScript</title>
+   
+  <style>
+        @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700');
+ 
+        *, *:before, *:after {margin: 0; padding: 0; box-sizing: border-box;}
+        body { font: 12px 'Open Sans', sans-serif;}
+ 
+        .top { padding-right: 20px; background: #261F41; text-align: right; }
+        a { color: rgba(255,255,255,0.6); text-transform: uppercase; text-decoration: none; line-height: 42px; }
+ 
+        h1 {padding: 50px 0; font-weight: 400; text-align: center;}
+         
+        .main {margin: 0 auto; max-width: 500px;}
+        .main .quizsection {margin-bottom: 20px;}
+ </style>
+  
+</head>
+ 
+<body>
+<section>
+    <fieldset>
+    <legend>Личные данные</legend>
+<div>
+ <label for="name">Имя</label><br>
+ <input type="text" id="name">
+</div>
+<div>
+<label for="surname">Фамилия</label><br>
+<input type="text" id="surname">
+</div>
+<div>
+ <label for="email">E-mail</label><br>
+ <input type="email" id="email">
+</div>
+</fieldset>
+<br>
+
+</section>
+ 
+<section class="main">
+ <fieldset>
+<form name="quiz" class="quizform">
+ 
+<div class="quizsection">
+ 
+ 
+    <h2>1.Какой класс Tkinter соответствует виджету для поля ввода?</h2>
+     
+    <div class="answer">
+        <input name="q1" value="value2" id="value1" type="radio" checked="checked" /> Frame
+    </div>
+ 
+    <div class="answer">
+        <input name="q1" value="value1" id="value2" type="radio" /> Label
+    </div>
+ 
+    <div class="answer">
+        <input name="q1" value="value1" id="value3" type="radio" /> Text
+    </div>
+ 
+    <div class="answer">
+        <input name="q1" value="value1" id="value4" type="radio" /> Entry
+    </div>
+
+    </div>
+ 
+</div>
+ 
+<div class="quizsection">
+ 
+    <h2>2. Какой класс Tkinter соответствует виджету для надписи?</h2>
+ 
+    <div class="answer">
+        <input name="q2" value="value1" id="value1" type="radio" checked="checked" /> Text
+    </div>
+ 
+    <div class="answer">
+        <input name="q2" value="value2" id="value2" type="radio" />Entry
+    </div>
+ 
+    <div class="answer">
+        <input name="q2" value="value1" id="value3" type="radio" /> Label
+    </div>
+ 
+    <div class="answer">
+        <input name="q2" value="value1" id="value4" type="radio" /> Frame
+    </div>
+ 
+</div>
+ 
+<div class="quizsection">
+ 
+    <h2>3. Какой класс Tkinter соответствует виджету для вывода графических примитивов?</h2>
+ 
+    <div class="answer">
+        <input name="q3" value="value1" id="value1" type="radio" checked="checked" /> Label
+    </div>
+ 
+    <div class="answer">
+        <input name="q3" value="value1" id="value2" type="radio" /> Frame
+    </div>
+ 
+    <div class="answer">
+        <input name="q3" value="value2" id="value3" type="radio" /> Text
+    </div>
+ 
+    <div class="answer">
+        <input name="q3" value="value1" id="value4" type="radio" /> Canvas
+    </div>
+ 
+</div>
+
+<div class="quizsection">
+ 
+    <h2>4. Каковы главные преимущества Tkinter?</h2>
+ 
+    <div class="answer">
+        <input name="q4" value="value1" id="value1" type="checkbox" checked="checked" /> Возможность использовать в коммерческих и opensource проектах.
+    </div>
+ 
+    <div class="answer">
+        <input name="q4" value="value1" id="value2" type="checkbox" /> Гибкость и стабильность.
+    </div>
+ 
+    <div class="answer">
+        <input name="q4" value="value2" id="value3" type="checkbox" /> Легкость в изучении.
+    </div>
+ 
+    <div class="answer">
+        <input name="q4" value="value1" id="value4" type="checkbox" /> Входит в стандартную библиотеку языка Python.
+
+    </div>
+ 
+</div>
+</fieldset>
+<br>
+<fieldset>
+<label for="color">Выберите упаковщик</label> <br>
+<select name="color">
+<option value="red">tk()</option>
+<option value="green">get()</option>
+<option value="blue">pack()</option>
+</select>
+</fieldset>
+<br>
+<fieldset>
+<h2>Задача: Лыжник. Напишите программу.</h2>
+<label for="text">В первый день лыжник прошел 10км, а каждый последующий день увеличивал дистанцию на 10%. Определить пройденную дистанцию за каждый последующий день и общую за 11 дней.</label> <br> <br>
+<textarea name="text"></textarea>
+</fieldset>
+<br>
+<input value="Submit" type="submit" /> <input value="Reset" type="reset" />
+ <br>
+<br>
+ <fieldset>
+<label for="university">Обратная связь: Понравился ли Вам курс?</label> <br>
+<input type="text" name="university">
+<button type="submit">Отправить</button><br>
+</fieldset>
+</form>
+ <br>
+</section>
+ 
+</body>
+</html>
